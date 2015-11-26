@@ -7,9 +7,98 @@
 #One dimensional arrays that can hold numeric data
 #Combine function c() is used to form the vector (concatenate)
 
-a <- c(1, 2, 5, 3, 6, -2, 4)
-b <- c("one", "two", "three")
-c <- c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE)
+a <- c(1, 2, 5, 3, 6, -2, 4) #Numeric vector
+b <- c("one", "two", "three") #Character vector
+c <- c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE) #Logical vector
 
-#These are some examples of vectors
+#These are some examples of vectors. NB! -> YOu can't mix types in a vector (unike Python)
+
+#You can refer to elements in a vector 
+
+a[3] #Refers to the third element in vetor a
+a[c(1, 3, 5)] #Refers to the first, third and fifth element of the vector a
+
+#Colon operator generates a sequence of numbers 
+
+d <- c(2:6) #Generates numbers from 2 to 6
+
+#Matrices
+
+m <- matrix(vector, nrow=number_of_rows, ncol=number_of_columns,
+            byrow=logical_value, dimnames=list(char_vector_rownames, char_vector_colnames))
+
+#vector -- elements of the matrix
+#nrow + ncol -- row and column dimensions
+#dimnames -- optional row and column labels
+#byrow -- indicates whether the matrix shold be filled in by row or by column (default is by column)
+
+y <- matrix(1:20, nrow=5, ncol=4) #Generates a 5X4 matrix
+cells <- c(1, 26, 24, 68)
+rnames <- c("R1", "R2")
+cnames <- c("C1", "C2")
+mymatrix <- matrix(cells, nrow=2, ncol=2, byrow=TRUE, dimnames=list(rnames, cnames))
+
+#Matrices are two dimensional and can contain only one data type
+#More than two dimensions --> Arrays
+#Multiple modes of data --> Dataframes
+
+#Arrays
+
+dim1 <- c("A1", "A2")
+dim2 <- c("B1", "B2", "B3")
+dim3 <- c("C1", "C2", "C3", "C4")
+z <- array(1:24, c(2, 3, 4), dimnames=list(dim1, dim2, dim3))
+
+#Data frames... Probably the most important and relevant measure
+#Columns can contain different modes of data
+#Most common data structure in R
+
+mydata <- data.frame(col1, col2, clo3, ...) #Example
+
+#col1, col2, col3 -- column vectors of ANY type
+
+#Example of a data frame. 
+
+patientID <- c(1, 2, 3, 4)
+age <- c(25, 34, 28, 52)
+diabetes <- c("Type1", "Type2", "Type1", "Type1")
+status <- c("Poor", "Impoverished", "Excellent", "Poor")
+patientdata <- data.frame(patientID, age, diabetes, status)
+
+#Each column must have only one mode, but you can put columns of different modes together
+
+patientdata[1:2] #Specifies the first two columns of this data frame
+patientdat$age #The $ operator allows you to call a specific element of the data frame
+
+table(patientdata$diabetes, patientdata$status) #Cross-tabulate the entries
+
+#Attach, detach and with
+#Attach -- adds the data frame to the R search path
+
+summary(mtcars$mpg)
+plot(mtcars$mpg, mtcars$disp)
+plot(mtcars$mpg, mtcars$wt)
+
+#Instead of writing everything, you can simply use attach. 
+
+attach(mtcars) #Basically you tell R that you are giong to be using this data frame. 
+  summary(mpg)
+  plot(mpg, disp)
+  plot(mpg, wt)
+detach(mtcars)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
