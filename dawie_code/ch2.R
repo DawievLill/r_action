@@ -81,12 +81,47 @@ plot(mtcars$mpg, mtcars$wt)
 
 #Instead of writing everything, you can simply use attach. 
 
-attach(mtcars) #Basically you tell R that you are giong to be using this data frame. 
+attach(mtcars) #Basically you tell R that you are giong to be using this data frame
   summary(mpg)
   plot(mpg, disp)
   plot(mpg, wt)
-detach(mtcars)
+detach(mtcars) #Removes the data frame after you have used it
 
+#Mostly only useful when arguments can only have one name
+  
+#Factors
+#Nominal (categorical) variable -- Without implied order
+#Ordinal (ordered categorical) variable -- Imply order, but not amount
+#Continuous variable -- Take on any value within a given range. Both order and amount are implied. 
+    #Age (in years) -- continuous variable
+  
+#Nominal and ordinal variables are FACTORS
+  
+#Examples
+
+diabetes <- factor(diabetes) #Stores this as the vector (1, 2, 1, 1), NOT ordered
+status <- factor(status, order = TRUE) #Will encode the vector as (3, 2, 1, 3), order part indicates it is an ordered variable
+#Assigns are created in alphabetical order by default
+
+#This is obviously not always going to work. The order might not be relevant in the case of alphabetical ordering
+#We want to override the default setting
+
+status <- factor(status, order = TRUE, levels = c("Poor", "Improved", "Excellent"))
+sex <- factor(sex, levels = c(1, 2), labels = c("Male", "Female"))
+
+
+#Lists (similar to Python) are a complex data type
+#Can contain a variety of objects (strings, numeric vectors, matrices, etc.)
+
+
+                
+
+
+
+
+  
+  
+  
 
 
 
