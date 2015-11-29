@@ -113,9 +113,33 @@ sex <- factor(sex, levels = c(1, 2), labels = c("Male", "Female"))
 #Lists (similar to Python) are a complex data type
 #Can contain a variety of objects (strings, numeric vectors, matrices, etc.)
 
+#Data input
 
-                
+#edit() function invokes R's text editor -- enter data manually
 
+#Example -- creating a data frame
+
+mydata <- data.frame(age=numeric(0), gender=character(0), weight=numeric(0)) 
+#age=numeric(0) creates a variable for a specifc mode (without actual data)
+
+mydata <- edit(mydata) #Edit function operates on a copy of itself. Must assign a destination to edit. 
+fix(mydata) #Shortcut for the editor                
+
+#You can also embed data directly (I don't like doing it this way, seems cumbersome)
+
+mydatatxt <- "
+age gender weight
+25 m 166
+30 f 115
+18 f 120
+"
+
+mydata <- read.table(header=TRUE, text=mydatatxt)
+
+#These techniques are relevant for smaller data sets. Normally we won't use them
+
+#Importing data from a delimited text file.
+#Use the read.table command -- reads a file in table format and saves as data frame
 
 
 
