@@ -141,6 +141,43 @@ mydata <- read.table(header=TRUE, text=mydatatxt)
 #Importing data from a delimited text file.
 #Use the read.table command -- reads a file in table format and saves as data frame
 
+#Many features of the read.table command -- refer to the help file for options
+
+#Importing data from Excel
+#Best way is to export the .xlsx file as comma delimited
+#You can also use the xlsx package (also need xlsxjars and rJava packages)
+
+#read.xlsx works in a similar way to read.table
+
+#read.xlsx2() is better for larger datasets -- performs some of the processing work in Java
+
+#Webscraping allows you to collect data from websites. 
+#Text can be downloaded with readLines() functions and then manipulated with grep() and gsub()
+
+#Look at the website, www.programmingr.com for more details
+#Awesome -- You can access social media data through twitteR, Rfacebook and Rflickr
+
+#Annotating datasets
+#Adding descriptive data labels and codes to items
+
+#Variable labels
+#R doesn't have the ability to really deal with these in an effective manner
+
+names(patientdata)[2] <- "Age at hospitalization (in years)" #This renames the age variable in the second column to this long string
+#Not really practical to use. Refer to the variable as patientdata[2] when calling it
+
+#Value labels
+#The factor() function can be used to create value labels for categorical variables.
+
+patientdata$gender <- factor(patientdata$gender,
+                             levels = c(1,2),
+                             labels = c("male", "female"))
+
+#levels -- actual values of the varaibles
+#labels -- character vector containing the desired labels
+
+#See table 2.4 for some useful function when working with data objects
+
 
 
   
