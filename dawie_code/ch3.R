@@ -47,14 +47,57 @@ par(opar) #Restore original settings. If I don't do this the settings will remai
 
 #Symbols and lines
 
+#pch -- symbols for plotting points
+#cex -- symbol size
+#lty -- line type
+#lwd -- line width
+
+#colors() returns all available colour names (There are more than 600)
+
+#RColorBrewer package allows you to create attractive color palettes
+
+install.packages("RColorBrewer")
+library(RColorBrewer)
+n <- 7
+mycolors <- brewer.pal(n, "Set1")
+barplot(rep(1,n), col=mycolors)
+
+display.brewer.all() #Shows all palettes
 
 
+#Grey levels are generated as a vector of numbers between 0 and 1
+n <- 10
+mycolors <- rainbow(n)
+pie(rep(1, n), labels=mycolors, col=mycolors)
+mygrays <- gray(0:n/n)
+pie(rep(1, n), labels=mygrays, col=mygrays)
+
+#Shows some of the different gray levels
+
+#Text characteristics - font, size and style
+
+#Graph and margin dimensions
+
+#pin -- plot dimensions (expressed in inches)
+#mai -- margin size (expressed in inches)
+
+par(pin = c(4, 3), mai = c(1, 0.5, 1, 0.2)) 
+#Produces a graph that is 4 inches wide and 3 inches tall, with a 1 inch margin on the bottom and top, 0.5 on the left and 0.2 on the right.
+
+#Let us look back at our simple example. 
+
+opar <- par(no.readonly = TRUE) #Save original grpahics settings, so that we can reset it
+par(pin=c(2,3)) #Graph is now 2 inches wide and 3 inches tall
+par(lwd=2, cex=1.5) #Lines will be 2 times their default width and symbols 1.5 times
+par(cex.axis=0.75, font.axis=3) #Axis text is set to italic and scaled to 75%. 
+plot(dose, drugA, type = "b", pch=19, lty=2, col="red") #Filled red circles and dashed lines
+plot(dose, drugB, type = "b", pch=23, lty=6, col="blue", bg="green") #Filled green diamonds (with blue border) and blue dashed lines
+par(opar)
+
+#Parameters set in the par() function are global, while those set in the plot function are local
 
 
-
-
-
-
+#Customizing!
 
 
 
